@@ -13,7 +13,7 @@ import { Category } from './category/category.entity';
     host: 'localhost',
     port: 3306,
     username: 'root',
-    password: '@DroneBreaker55',
+    password: 'thezombies',
     database: 'backend_db',
     entities: [User, Category],
     synchronize: true
