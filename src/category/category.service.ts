@@ -9,7 +9,7 @@ import { UpdateCategoryDto } from "./dto/update-category.dto";
 export class categoryService{
     constructor(@InjectRepository(Category) private categoryRepository: Repository<Category>) {}
 
-    getProducts(): Promise<Category[]> {
+    getCategories(): Promise<Category[]> {
         return this.categoryRepository.find()
     }
 

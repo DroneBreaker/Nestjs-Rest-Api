@@ -1,6 +1,5 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
 import { categoryService } from "./category.service";
-import { CreateProductDto } from "../product/dto/create-product.dto";
 import { CreateCategoryDto } from "./dto/create-category.dto";
 import { UpdateCategoryDto } from "./dto/update-category.dto";
 
@@ -9,8 +8,8 @@ export class CategotyController{
     constructor(private readonly categoryService: categoryService) {}
 
     @Get('/category')
-    allProducts() {
-        return this.categoryService.getProducts()
+    allCategories() {
+        return this.categoryService.getCategories()
     }
 
     @Post('/category')
