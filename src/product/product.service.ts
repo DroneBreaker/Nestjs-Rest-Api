@@ -14,18 +14,18 @@ export class ProductService{
     }
 
     create(createProductDto: CreateProductDto) {
-        return createProductDto
+        return this.productRepository.save(createProductDto)
     }
 
     findProduct(productId: number) {
-        return { productId }
+        return this.productRepository.findOne({where: { id: productId }})
     }
 
-    update(updateProductDto: UpdateProductDto, productId: number) {
-        return { updateProductDto, productId, message: `Product with id number ${productId} has been updated successfully` }
+    updateById(updateProductDto: UpdateProductDto, productId: number) {
+        return this.productRepository.update(productId, updateProductDto)
     }
 
-    delete(productId: number) {
-        return { productId, message: `Product with id number ${productId} has been deleted` }
+    deleteById(productId: number) {
+        return this.productRepository.delete(productId)
     }
 }

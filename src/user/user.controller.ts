@@ -24,11 +24,11 @@ export class UserController{
 
     @Patch('/users/:userId')
     updateUser(@Body() updateuserDto: UpdateuserDto , @Param( 'userId', ParseIntPipe) userId: number ) {
-        return this.userService.update(updateuserDto, userId)
+        return this.userService.updateById(updateuserDto, userId)
     }
 
     @Delete('/users/:userId') 
     deleteUser(@Param('userId', ParseIntPipe) userId: number) {
-        return this.userService.delete(userId)
+        return this.userService.deleteById(userId)
     }
 }

@@ -10,7 +10,11 @@ export class CreateProductDto {
     @IsNotEmpty()
     description: string
 
-    @IsDecimal()
+    @IsString()
+    @IsNotEmpty()
+    image: string
+
+    @IsNumber()
     @IsNotEmpty()
     price: number
 }

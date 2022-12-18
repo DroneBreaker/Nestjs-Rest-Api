@@ -3,32 +3,32 @@ import { categoryService } from "./category.service";
 import { CreateCategoryDto } from "./dto/create-category.dto";
 import { UpdateCategoryDto } from "./dto/update-category.dto";
 
-@Controller()
+@Controller('categories')
 export class CategotyController{
     constructor(private readonly categoryService: categoryService) {}
 
-    @Get('/category')
+    @Get()
     allCategories() {
         return this.categoryService.getCategories()
     }
 
-    @Post('/category')
+    @Post()
     createProduct(@Body() createCategoryDto: CreateCategoryDto) {
         return this.categoryService.create(createCategoryDto)
     }
 
-    @Get('/category/:categoryId')
-    getCategory(@Param('userId', ParseIntPipe) categoryId: number) {
-        return this.categoryService.getCategory(categoryId)
+    @Get('/:categoryId')
+    getCategory(@Param('categoryId', ParseIntPipe) categoryId: number) {
+        return this.categoryService.getCategoryById(categoryId)
     }
 
-    @Patch('category/:categoryId')
+    @Patch('/:categoryId')
     updateCategory(@Body() updateCategoryDto: UpdateCategoryDto, @Param( 'categoryId', ParseIntPipe) categoryId: number ) {
-        return this.categoryService.update(updateCategoryDto, categoryId)
+        return this.categoryService.updateById(updateCategoryDto, categoryId)
     }
 
-    @Delete('/category/:categoryId')
+    @Delete('/:categoryId')
     deleteCategory(@Param('categoryId', ParseIntPipe) categoryId: number) {
-        return this.categoryService.delete(categoryId)
+        return this.categoryService.deleteBydId(categoryId)
     }
 }

@@ -14,18 +14,18 @@ export class categoryService{
     }
 
     create(createCategoryDto: CreateCategoryDto) {
-        return createCategoryDto
+        return this.categoryRepository.save(createCategoryDto)
     }
 
-    getCategory(categoryId: number) {
-        return { categoryId}
+    getCategoryById(categoryId: number) {
+        return this.categoryRepository.findOne({where: { id: categoryId }})
     }
 
-    update(updateCategoryDto: UpdateCategoryDto, categoryId: number) {
-        return {body: updateCategoryDto, categoryId }
+    updateById(updateCategoryDto: UpdateCategoryDto, categoryId: number) {
+        return this.categoryRepository.update(categoryId, updateCategoryDto)
     }
 
-    delete(categoryId: number) {
-        return { categoryId, message: "Category deleted successfully" }
+    deleteBydId(categoryId: number) {
+        return this.categoryRepository.delete(categoryId)
     }
 }

@@ -24,11 +24,11 @@ export class ProductController {
 
     @Patch('/products/:productId')
     updateProduct(@Body() updateProductDto: UpdateProductDto, @Param( 'productId', ParseIntPipe) productId: number) {
-        return this.productService.update(updateProductDto, productId)
+        return this.productService.updateById(updateProductDto, productId)
     }
 
     @Delete('/products/:productId')
     deleteProduct(@Param('productId', ParseIntPipe) productId: number) {
-        return this.productService.delete(productId)
+        return this.productService.deleteById(productId)
     }
 }

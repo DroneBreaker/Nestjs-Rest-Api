@@ -14,18 +14,18 @@ export class UserService {
     }
 
     create(createUserDto: CreateUserDto) {
-        return createUserDto
+        return this.userRepository.save(createUserDto)
     }
 
     getUser(userId: number ) {
-        return { userId }
+        return this.userRepository.findOne({where: { id: userId }})
     }
 
-    update(updateUserDto: UpdateuserDto, userId: number) {
-        return {body: updateUserDto, userId}
+    updateById(updateUserDto: UpdateuserDto, userId: number) {
+        return this.userRepository.update(userId, updateUserDto)
     }
 
-    delete(userId: number) {
-        return {userId, message: 'Deleted Successfully'}
+    deleteById(userId: number) {
+        return this.userRepository.delete(userId)
     }
 }
